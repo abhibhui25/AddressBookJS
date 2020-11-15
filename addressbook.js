@@ -1,16 +1,8 @@
 class Contact{
-    firstName;
-    lastName;
-    address;
-    city;
-    state;
-    zip;
-    phoneNo;
-    email;
-
-    constructor(...params){
-        this.firstName = params[0];
-        this.lastName = params[1];
+    constructor(...params)
+    {        
+        this.firstName = params[0]        
+        this.lastName = params[1];        
         this.address = params[2];
         this.city = params[3];
         this.state = params[4];
@@ -19,12 +11,8 @@ class Contact{
         this.email = params[7];
     }
 
-    get firstName()
-    { 
-        return this._firstName
-    }
-    set firstName(firstName)
-    {
+    get firstName(){ return this._firstName}
+    set firstName(firstName){
         let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z]{2,}$')
         if(nameRegex.test(firstName))
             this._firstName = firstName
@@ -84,7 +72,22 @@ class Contact{
         else throw "Incorrect Email"
     }
 
+    toString(){
+        return "FirstName: " + this.firstName + " LastName: " + this.lastName + " Address: " + this.address + " City: " + this.city +
+                " State: " + this.state + " Zip: " + this.zip + " PhoneNO: " + this.phoneNo + " Email: " + this.email;
+    }
+
 }
 
-let contact1 = new Contact("Abhishek", "Bhui", "BLR", "BLR", "KAR", 362731, 8126361399, "abhi@gmail.com")
-console.log(contact1)
+let contact1 = new Contact("Lionel", "Messi", "Buenos Aires", "Buenos", "Argentina", "126292", "91 8179032121", "messi11@gmail.com")
+let contact2 = new Contact("Cristiano", "Ronaldo", "Lisbon", "Lisbon", "Portugal", "352004", "91 9362287593", "cr722@gmail.com")
+let contact3 = new Contact("Abhishek", "Bhui", "Yel", "Blr", "Karnataka", "561004", "91 2984280202", "abhi12@gmail.com")
+
+var addressBookArray = new Array()
+addressBookArray.push(contact1)
+addressBookArray.push(contact2)
+addressBookArray.push(contact3)    
+
+for(let i = 0; i < addressBookArray.length; i++){
+    console.log(addressBookArray[i].toString())
+}
